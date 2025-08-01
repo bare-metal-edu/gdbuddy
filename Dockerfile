@@ -1,6 +1,4 @@
-FROM debian
-
-ENV   RUNNER_TOKEN=""
+FROM  debian:bullseye
 
 RUN   useradd -ms /bin/bash runner
 
@@ -16,14 +14,16 @@ RUN   apt-get update && apt-get install -y \
       libtool \
       libftdi-dev \
       libusb-1.0.0-dev \
-      python3 \
       python-is-python3 \
       python3-pip \
       pkg-config \
       pcregrep \
-      gdb-multiarch
+      gdb-multiarch \
+      wget \
+      jimsh \
+      libjim-dev
 
-RUN   python -m pip install gatorgrade --break-system-packages
+RUN   python -m pip install gatorgrade 
 
 RUN   mkdir /tools
 RUN   cd /tools && \ 
@@ -34,7 +34,7 @@ RUN   cd /tools && \
 ENV   PICO_SDK_PATH="/tools/pico-sdk"
 
 RUN   cd /tools && \
-      git clone https://github.com/raspberrypi/openocd.git --branch rp2040 --depth=1 && \
+      git clone https://github.com/raspberrypi/openocd --branch master --depth=1 && \
       cd openocd && \
       ./bootstrap && \
       ./configure && \
