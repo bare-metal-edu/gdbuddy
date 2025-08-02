@@ -1,6 +1,6 @@
 services:
   gdbuddy:
-    image: gdbuddy:latest
+    image: ghcr.io/bare-metal-edu/gdbuddy:latest
     environment:
       RUNNER_ORG:
       RUNNER_TOKEN:
