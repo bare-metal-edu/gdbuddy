@@ -1,5 +1,8 @@
 #/bin/sh
 
+echo $RUNNER_ORG
+echo $RUNNER_TOKEN
+
 cd /runner && \
 ./config.sh --url $RUNNER_ORG --token $RUNNER_TOKEN &&
 ./run.sh &
