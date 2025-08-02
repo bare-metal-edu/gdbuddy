@@ -1,0 +1,9 @@
+services:
+  gdbuddy:
+    image: gdbuddy:latest
+    environment:
+      RUNNER_ORG:
+      RUNNER_TOKEN:
+    privileged: true
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
