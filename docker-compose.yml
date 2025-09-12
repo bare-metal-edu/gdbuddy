@@ -2,8 +2,8 @@ services:
   gdbuddy:
     image: ghcr.io/bare-metal-edu/gdbuddy:latest
     environment:
-      RUNNER_ORG:
-      RUNNER_TOKEN:
+      RUNNER_ORG: https://github.com/bare-metal-edu
+      GITHUB_PAT: ${GITHUB_PAT}
     privileged: true
     devices:
       - "/dev/ttyACM0:/dev/ttyACM0"

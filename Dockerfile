@@ -21,7 +21,9 @@ RUN   apt-get update && apt-get install -y \
       gdb-multiarch \
       wget \
       jimsh \
-      libjim-dev
+      libjim-dev \
+      jq
+      
 
 RUN   python -m pip install gatorgrade 
 
