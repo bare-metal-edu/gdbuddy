@@ -6,10 +6,10 @@ set -e
 ORG_NAME=$(echo "$RUNNER_ORG" | awk -F/ '{print $NF}')
 
 # Fetch the runner registration Token from GitHub API
-RUNNER_TOKEN=$(curl -s -X POST /
--H "Authorization: Bearer $GITHUB_PAT" \
--H "Accept: application/vnd.github+json" \
-"https://api.github.com/orgs/$ORG_NAME/actions/runners/registration-token" | jq -r .token)
+RUNNER_TOKEN=$(curl -s -X POST \
+    -H "Authorization: Bearer $GITHUB_PAT" \
+    -H "Accept: application/vnd.github+json" \
+    "https://api.github.com/orgs/$ORG_NAME/actions/runners/registration-token" | jq -r .token)
 
 cd /runner && \
 ./config.sh --url "$RUNNER_ORG" --token "$RUNNER_TOKEN" &&
