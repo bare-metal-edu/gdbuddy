@@ -6,4 +6,4 @@ services:
       GITHUB_PAT: ${GITHUB_PAT}
     privileged: true
     devices:
-      - "/dev/ttyACM0:/dev/ttyACM0"
+      - "/dev/tty.usbmodem1101:/dev/ttyACM0"
