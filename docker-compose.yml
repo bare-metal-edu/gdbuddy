@@ -1,9 +1,11 @@
 services:
   gdbuddy:
     image: ghcr.io/bare-metal-edu/gdbuddy:latest
+    stdin_open: true
+    tty: true
     environment:
       RUNNER_ORG: https://github.com/bare-metal-edu
       GITHUB_PAT: ${GITHUB_PAT}
     privileged: true
     devices:
-      - "/dev/tty.usbmodem1101:/dev/ttyACM0"
+      - "/dev/ttyACM0:/dev/ttyACM0"
