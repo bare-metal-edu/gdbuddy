@@ -23,6 +23,9 @@ cd /runner && \
     -f /tools/openocd-helpers.tcl \
     -f interface/cmsis-dap.cfg \
     -f target/rp2040.cfg \
-    -c "adapter speed 5000"
+    -c "adapter speed 1000" \
+    -c "gdb_remotetimeout 5000" \
+    -c "reset init" \
+    -c "halt"
 
 
