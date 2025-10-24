@@ -11,8 +11,17 @@ RUNNER_TOKEN=$(curl -s -X POST \
     -H "Accept: application/vnd.github+json" \
     "https://api.github.com/orgs/$ORG_NAME/actions/runners/registration-token" | jq -r .token)
 
-cd /runner && \
-./config.sh --url "$RUNNER_ORG" --token "$RUNNER_TOKEN" &&
+cd /runner
+
+# only configure runner if not already configured
+if [ ! -f .runner ]; then
+    echo "Runner not configured, configuring now..."
+    ./config.sh --url "$RUNNER_ORG" --token "$RUNNER_TOKEN"
+else
+    echo "Runner already configured, skipping config."
+fi
+
+# Start the runner in the background
 ./run.sh &
 
 /tools/openocd/src/openocd \
