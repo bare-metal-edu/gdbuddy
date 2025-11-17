@@ -25,16 +25,11 @@ fi
 ./run.sh &
 
 /tools/openocd/src/openocd \
-    -c "gdb port 50000" \
-    -c "tcl port 50001" \
-    -c "telnet port 50002" \
+    -c "gdb_port 50000" \
+    -c "tcl_port 50001" \
+    -c "telnet_port 50002" \
     -s /tools/openocd/tcl \
     -f /tools/openocd-helpers.tcl \
     -f interface/cmsis-dap.cfg \
     -f target/rp2040.cfg \
-    -c "adapter speed 1000" \
-    -c "gdb_remotetimeout 5000" \
-    -c "reset init" \
-    -c "halt"
-
-
+    -c "adapter speed 5000"

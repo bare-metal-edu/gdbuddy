@@ -22,7 +22,8 @@ RUN   apt-get update && apt-get install -y \
       wget \
       jimsh \
       libjim-dev \
-      jq
+      jq \
+      nano
       
 
 RUN   python -m pip install gatorgrade 
@@ -30,8 +31,6 @@ RUN   python -m pip install gatorgrade
 RUN   mkdir /tools
 RUN   cd /tools && \ 
       git clone -b master --recurse-submodules https://github.com/raspberrypi/pico-sdk.git && \
-      cd pico-sdk && \
-      git reset --hard 6a7db34
 
 ENV   PICO_SDK_PATH="/tools/pico-sdk"
 
