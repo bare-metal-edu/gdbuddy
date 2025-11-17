@@ -30,7 +30,7 @@ RUN   python -m pip install gatorgrade
 
 RUN   mkdir /tools
 RUN   cd /tools && \ 
-      git clone -b master --recurse-submodules https://github.com/raspberrypi/pico-sdk.git && \
+      git clone -b master --recurse-submodules https://github.com/raspberrypi/pico-sdk.git
 
 ENV   PICO_SDK_PATH="/tools/pico-sdk"
 
