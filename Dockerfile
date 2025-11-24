@@ -26,7 +26,7 @@ RUN   apt-get update && apt-get install -y \
       nano
       
 
-RUN   python -m pip install gatorgrade 
+RUN   python -m pip install gatorgrade --break-system-packages
 
 RUN   mkdir /tools
 RUN   cd /tools && \ 
