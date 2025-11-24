@@ -23,7 +23,8 @@ RUN   apt-get update && apt-get install -y \
       jimsh \
       libjim-dev \
       jq \
-      nano
+      nano \ 
+      libicu
       
 
 RUN   python -m pip install gatorgrade --break-system-packages
