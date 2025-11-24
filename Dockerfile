@@ -17,7 +17,7 @@ RUN   apt-get update && apt-get install -y \
       python-is-python3 \
       python3-pip \
       pkg-config \
-      pcre2grep \
+      pcre2-utils \
       gdb-multiarch \
       wget \
       jimsh \
