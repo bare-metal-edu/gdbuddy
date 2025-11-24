@@ -43,12 +43,12 @@ RUN   cd /tools && \
 
 ENV   OPENOCD_PATH="/tools/openocd"
 
-RUN   mkdir -p /tools/cmocka
-RUN   cd /tools/cmocka && \
-      wget https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz && \
-      tar -xvf cmocka-1.1.7.tar.xz && \
-      cd cmocka-1.1.7 && mkdir -p build && cd build && \
-      cmake .. && make && make install
+# RUN   mkdir -p /tools/cmocka
+# RUN   cd /tools/cmocka && \
+#      wget https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz && \
+#      tar -xvf cmocka-1.1.7.tar.xz && \
+#      cd cmocka-1.1.7 && mkdir -p build && cd build && \
+#      cmake .. && make && make install
 
 RUN   mkdir runner
 RUN   cd runner && \
