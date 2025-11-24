@@ -1,7 +1,6 @@
 services:
   gdbuddy:
-    #image: ghcr.io/bare-metal-edu/gdbuddy:latest
-    image: gdbuddy:latest
+    image: ${IMG_NAME}
     environment:
       RUNNER_ORG: https://github.com/${GITHUB_ORG}
       GITHUB_PAT: ${GITHUB_PAT}
