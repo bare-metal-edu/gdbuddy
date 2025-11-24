@@ -2,7 +2,7 @@ services:
   gdbuddy:
     image: ghcr.io/bare-metal-edu/gdbuddy:latest
     environment:
-      RUNNER_ORG: https://github.com/bare-metal-edu
+      RUNNER_ORG: https://github.com/allegheny-college-cmpsc-200-fall-2025
       GITHUB_PAT: ${GITHUB_PAT}
     privileged: true
     devices:

@@ -1,4 +1,4 @@
-FROM  debian:bullseye
+FROM  debian:trixie
 
 RUN   useradd -ms /bin/bash runner
 
@@ -52,8 +52,8 @@ RUN   cd /tools/cmocka && \
 
 RUN   mkdir runner
 RUN   cd runner && \
-      curl -o actions-runner-linux-x64-2.320.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.320.0/actions-runner-linux-x64-2.320.0.tar.gz && \
-      tar xzf ./actions-runner-linux-x64-2.320.0.tar.gz
+      curl -o actions-runner-linux-x64-2.330.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-linux-x64-2.330.0.tar.gz && \
+      tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
 
 ADD   entrypoint.sh entrypoint.sh
 RUN   chmod +x entrypoint.sh
