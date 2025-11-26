@@ -44,12 +44,15 @@ RUN   cd /tools && \
 
 ENV   OPENOCD_PATH="/tools/openocd"
 
-# RUN   mkdir -p /tools/cmocka
-# RUN   cd /tools/cmocka && \
-#      wget https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz && \
-#      tar -xvf cmocka-1.1.7.tar.xz && \
-#      cd cmocka-1.1.7 && mkdir -p build && cd build && \
-#      cmake .. && make && make install
+# Upated Cmake install
+# Install dependencies needed to add the Kitware repo
+RUN apt-get update && apt-get install -y wget gpg software-properties-common
+
+# Add Kitware's APT signing key & repository
+RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc \
+    | gpg --dearmor -o /usr/share/keyrings/kitware-archive-keyring.gpg && \
+    echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/debian/ trixie main' \
+    > /etc/apt/sources.list.d/kitware.list
 
 RUN   mkdir runner
 RUN   cd runner && \
