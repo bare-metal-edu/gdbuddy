@@ -4,7 +4,6 @@ RUN   useradd -ms /bin/bash runner
 
 RUN   apt-get update && apt-get install -y \
       gcc-arm-none-eabi \
-      cmake \
       curl \
       git \
       automake \
@@ -25,7 +24,14 @@ RUN   apt-get update && apt-get install -y \
       jq \
       nano \ 
       libicu-dev
-      
+
+RUN   cd /tools && \
+      wget https://cmake.org/files/v4.1/cmake-4.1.2.tar.gz && \
+      tar -xf cmake-4.1.2.tar.gz && \
+      cd cmake-4.1.2 && \
+      ./bootstrap --prefix=/usr/local && \
+      make -j$(nproc) \ &&
+      sudo make install
 
 RUN   python -m pip install gatorgrade --break-system-packages
 
@@ -44,12 +50,12 @@ RUN   cd /tools && \
 
 ENV   OPENOCD_PATH="/tools/openocd"
 
-# RUN   mkdir -p /tools/cmocka
-# RUN   cd /tools/cmocka && \
-#      wget https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz && \
-#      tar -xvf cmocka-1.1.7.tar.xz && \
-#      cd cmocka-1.1.7 && mkdir -p build && cd build && \
-#      cmake .. && make && make install
+RUN   mkdir -p /tools/cmocka
+RUN   cd /tools/cmocka && \
+      wget https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz && \
+      tar -xvf cmocka-1.1.7.tar.xz && \
+      cd cmocka-1.1.7 && mkdir -p build && cd build && \
+      cmake .. && make && make install
 
 RUN   mkdir runner
 RUN   cd runner && \
