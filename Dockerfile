@@ -23,7 +23,7 @@ RUN   apt-get update && apt-get install -y \
       jimsh \
       libjim-dev \
       jq \
-      nano \ 
+      nano \
       libicu-dev
       
 
@@ -51,7 +51,22 @@ ENV   OPENOCD_PATH="/tools/openocd"
 #      cd cmocka-1.1.7 && mkdir -p build && cd build && \
 #      cmake .. && make && make install
 
-RUN   mkdir runner
+# ARDUINO TOOLCHAIN SECTION
+
+RUN apt-get update && apt-get install -y arduino-cli
+
+RUN arduino-cli config init
+
+RUN arduino-cli core update-index && \
+    arduino-cli core install arduino:avr && \
+    arduino-cli core install arduino:samd && \
+    arduino-cli core install arduino:mbed_rp2040
+
+RUN chown -R runner:runner /root/.arduino15
+
+# Runner Setup
+
+RUN   mkdir -p
 RUN   cd runner && \
       curl -o actions-runner-linux-x64-2.330.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-linux-x64-2.330.0.tar.gz && \
       tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
