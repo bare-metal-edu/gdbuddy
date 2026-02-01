@@ -11,7 +11,7 @@ RUNNER_TOKEN=$(curl -s -X POST \
     -H "Accept: application/vnd.github+json" \
     "https://api.github.com/orgs/$ORG_NAME/actions/runners/registration-token" | jq -r .token)
 
-cd /runner
+cd /home/runner/actions-runner
 
 # only configure runner if not already configured
 if [ ! -f .runner ]; then

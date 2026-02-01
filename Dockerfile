@@ -66,8 +66,8 @@ RUN chown -R runner:runner /root/.arduino15
 
 # Runner Setup
 
-RUN   mkdir -p
-RUN   cd runner && \
+RUN   mkdir -p /home/runner/actions-runner
+RUN   cd /home/runner/actions-runner && \
       curl -o actions-runner-linux-x64-2.330.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-linux-x64-2.330.0.tar.gz && \
       tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
 
