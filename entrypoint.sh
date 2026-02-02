@@ -24,6 +24,10 @@ fi
 # Start the runner in the background
 ./run.sh &
 
+# Board Detection
+
+
+
 /tools/openocd/src/openocd \
     -c "gdb_port 50000" \
     -c "tcl_port 50001" \
