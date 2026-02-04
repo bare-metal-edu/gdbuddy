@@ -20,10 +20,20 @@ RUN   apt-get update --allow-releaseinfo-change && \
 
 RUN   python -m pip install gatorgrade --break-system-packages
 
+# Create Directory for Arduino CLI
+RUN mkdir -p /usr/local/bin
+
 # Arduino CLI configuration
 RUN curl -fsSL https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz \
 | tar -xz -C /usr/local/bin --strip-components=1
+
+# very installation
+RUN arduino-cli version
+
+# Initialize Arduino CLI
 RUN arduino-cli config init
+
+# Install Arduino Cores
 RUN arduino-cli core update-index && \
     arduino-cli core install arduino:avr && \
     arduino-cli core install arduino:samd && \
