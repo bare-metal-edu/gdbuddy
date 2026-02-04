@@ -14,13 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+# Log in to GHCR
+      - name: Log in to container registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
 # Build and push Pico
       - name: Build Pico image
         run: |
           docker build -f Dockerfile-pico . -t gdbuddy-pico:latest
-
-      - name: Log in to container registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
       - name: Publish Pico image
         run: |
@@ -29,13 +30,9 @@ jobs:
           docker push $IMAGE_ID:latest
 
 # Build and push Arduino
-
       - name: Build Arduino image
         run: |
           docker build -f Dockerfile-arduino . -t gdbuddy-arduino:latest
-
-      - name: Log in to container registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
       - name: Publish Arduino image
         run: |
