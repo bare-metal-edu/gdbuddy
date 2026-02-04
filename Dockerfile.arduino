@@ -1,8 +1,9 @@
-FROM debian:trixie-slim
+FROM  debian:trixie-slim
 
-RUN useradd -ms /bin/bash runner
+RUN   useradd -ms /bin/bash runner
 
-RUN apt-get update && apt-get install -y \
+RUN   apt-get update --allow-releaseinfo-change && \
+      apt-get install -y \
       arduino-cli \
       curl \
       git \
@@ -13,9 +14,12 @@ RUN apt-get update && apt-get install -y \
       wget \
       nano \
       jq \
-      libusb-1.0-0-dev
+      libusb-1.0-0-dev \
+      ca-certificates \
+      gnupg \
+      && rm -rf /var/lib/apt/lists/*
 
-RUN python -m pip install gatorgrade --break-system-packages
+RUN   python -m pip install gatorgrade --break-system-packages
 
 # Arduino CLI configuration
 RUN arduino-cli config init
