@@ -27,11 +27,14 @@ RUN mkdir -p /usr/local/bin
 RUN curl -fsSL https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz \
 | tar -xz -C /usr/local/bin --strip-components=1
 
+# Make sure binary is executable 
+RUN chmod +x /usr/local/bin/arduino-cli
+
 # very installation
-RUN arduino-cli version
+RUN /usr/local/bin/arduino-cli version
 
 # Initialize Arduino CLI
-RUN arduino-cli config init
+RUN /usr/local/bin/arduino-cli config init
 
 # Install Arduino Cores
 RUN arduino-cli core update-index && \
