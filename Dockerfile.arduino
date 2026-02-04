@@ -4,7 +4,6 @@ RUN   useradd -ms /bin/bash runner
 
 RUN   apt-get update --allow-releaseinfo-change && \
       apt-get install -y \
-      arduino-cli \
       curl \
       git \
       python-is-python3 \
@@ -22,6 +21,8 @@ RUN   apt-get update --allow-releaseinfo-change && \
 RUN   python -m pip install gatorgrade --break-system-packages
 
 # Arduino CLI configuration
+RUN curl -fsSL https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_64bit.tar.gz \
+| tar -xz -C /usr/local/bin --strip-components=1
 RUN arduino-cli config init
 RUN arduino-cli core update-index && \
     arduino-cli core install arduino:avr && \
