@@ -1,6 +1,6 @@
 services:
   gdbuddy:
-    image: ${IMG_NAME}
+    image: ghcr.io/bare-metal-edu/gdbuddy-pico:latest
     environment:
       RUNNER_ORG: https://github.com/${GITHUB_ORG}
       GITHUB_PAT: ${GITHUB_PAT}

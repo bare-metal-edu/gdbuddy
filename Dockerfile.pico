@@ -51,18 +51,6 @@ ENV   OPENOCD_PATH="/tools/openocd"
 #      cd cmocka-1.1.7 && mkdir -p build && cd build && \
 #      cmake .. && make && make install
 
-# ARDUINO TOOLCHAIN SECTION
-
-RUN apt-get update && apt-get install -y arduino-cli
-
-RUN arduino-cli config init
-
-RUN arduino-cli core update-index && \
-    arduino-cli core install arduino:avr && \
-    arduino-cli core install arduino:samd && \
-    arduino-cli core install arduino:mbed_rp2040
-
-RUN chown -R runner:runner /root/.arduino15
 
 # Runner Setup
 
@@ -81,4 +69,4 @@ RUN   chmod o+rws /home/runner -R
 
 USER  runner
 
-ENTRYPOINT  /entrypoint.sh
+ENTRYPOINT  /entrypoint-pico.sh
