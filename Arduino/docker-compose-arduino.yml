@@ -1,6 +1,6 @@
 services:
   gdbuddy:
-    image: ghcr.io/bare-metal-edu/gdbuddy:arduino:latest
+    image: ghcr.io/bare-metal-edu/gdbuddy-arduino:latest
     environment:
       RUNNER_ORG: https://github.com/${GITHUB_ORG}
       GITHUB_PAT: ${GITHUB_PAT}
