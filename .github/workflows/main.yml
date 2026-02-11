@@ -21,7 +21,7 @@ jobs:
 # Build and push Pico
       - name: Build Pico image
         run: |
-          docker build -f Pico/Dockerfile.pico . -t gdbuddy-pico:latest
+          docker build -f Pico/Dockerfile.pico Pico/ -t gdbuddy-pico:latest
 
       - name: Publish Pico image
         run: |
