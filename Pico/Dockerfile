@@ -60,7 +60,7 @@ RUN   cd /home/runner/actions-runner && \
       tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
 
 ADD   Pico/entrypoint.sh entrypoint.sh
-RUN   chmod +x Pico/entrypoint.sh
+RUN   chmod +x entrypoint.sh
 
 ADD   Pico/openocd-helpers.tcl /tools/openocd-helpers.tcl
 
