@@ -47,7 +47,7 @@ RUN cd /home/runner/actions-runner && \
     tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
 
 ADD Arduino/entrypoint.sh entrypoint.sh
-RUN chmod +x Arduino/entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 RUN chown runner:runner /home/runner -R
 RUN chmod o+rws /home/runner -R
