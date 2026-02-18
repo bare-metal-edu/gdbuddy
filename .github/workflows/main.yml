@@ -21,7 +21,7 @@ jobs:
 # Build and push Pico
       - name: Build Pico image
         run: |
-          docker build -f Dockerfile . -t gdbuddy-pico:latest
+          docker build -f Pico/Dockerfile . -t gdbuddy-pico:latest
 
       - name: Publish Pico image
         run: |
@@ -32,7 +32,7 @@ jobs:
 # Build and push Arduino
       - name: Build Arduino image
         run: |
-          docker build -f Dockerfile . -t gdbuddy-arduino:latest
+          docker build -f Arduino/Dockerfile . -t gdbuddy-arduino:latest
 
       - name: Publish Arduino image
         run: |
