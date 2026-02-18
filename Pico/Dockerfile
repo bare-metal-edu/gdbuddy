@@ -59,14 +59,14 @@ RUN   cd /home/runner/actions-runner && \
       curl -o actions-runner-linux-x64-2.330.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-linux-x64-2.330.0.tar.gz && \
       tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
 
-ADD   entrypoint-pico.sh entrypoint-pico.sh
-RUN   chmod +x entrypoint-pico.sh
+ADD   entrypoint.sh entrypoint.sh
+RUN   chmod +x entrypoint.sh
 
-ADD   openocd-helpers.tcl /tools/openocd-helpers.tcl
+ADD   Pico/openocd-helpers.tcl /tools/openocd-helpers.tcl
 
 RUN   chown runner:runner /home/runner -R
 RUN   chmod o+rws /home/runner -R
 
 USER  runner
 
-ENTRYPOINT  /entrypoint-pico.sh
+ENTRYPOINT  /entrypoint.sh
