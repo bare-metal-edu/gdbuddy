@@ -21,21 +21,21 @@ jobs:
 # Build and push Pico
       - name: Build Pico image
         run: |
-          docker build -f Pico/Dockerfile . -t gdbuddy-pico:latest
+          docker build -f Pico/Dockerfile . -t gdbuddy:pico
 
       - name: Publish Pico image
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:pico
-          docker tag gdbuddy:pico $IMAGE_ID:latest
-          docker push $IMAGE_ID:latest
+          docker tag gdbuddy:pico $IMAGE_ID
+          docker push $IMAGE_ID
 
 # Build and push Arduino
       - name: Build Arduino image
         run: |
-          docker build -f Arduino/Dockerfile . -t gdbuddy-arduino:latest
+          docker build -f Arduino/Dockerfile . -t gdbuddy:arduino
 
       - name: Publish Arduino image
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:arduino
-          docker tag gdbuddy:arduino $IMAGE_ID:latest
-          docker push $IMAGE_ID:latest
+          docker tag gdbuddy:arduino $IMAGE_ID
+          docker push $IMAGE_ID
