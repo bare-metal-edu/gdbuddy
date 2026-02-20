@@ -13,11 +13,13 @@ RUN   apt-get update --allow-releaseinfo-change && \
       wget \
       nano \
       jq \
-      libusb-1.0-0-dev \
       ca-certificates \
       gnupg \
-      libstdc++6 \
-      libicu76 \
+      libtool \
+      libftdi-dev \
+      libusb-1.0.0-dev \
+      libjim-dev \
+      libicu-dev \
       && rm -rf /var/lib/apt/lists/*
 
 RUN   python -m pip install gatorgrade --break-system-packages
