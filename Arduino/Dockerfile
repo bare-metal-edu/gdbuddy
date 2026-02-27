@@ -20,6 +20,9 @@ RUN   apt-get update --allow-releaseinfo-change && \
       libusb-1.0.0-dev \
       libjim-dev \
       libicu-dev \
+      libstdc++6 \
+      pkg-config \
+      pcre2-utils \
       && rm -rf /var/lib/apt/lists/*
 
 RUN   python -m pip install gatorgrade --break-system-packages
