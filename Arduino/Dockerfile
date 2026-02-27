@@ -18,6 +18,7 @@ RUN   apt-get update --allow-releaseinfo-change && \
       libtool \
       libftdi-dev \
       libusb-1.0.0-dev \
+      libicu76 \
       libjim-dev \
       libicu-dev \
       libstdc++6 \
