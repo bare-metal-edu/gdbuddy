@@ -21,5 +21,5 @@ else
     echo "Runner already configured, skipping config."
 fi
 
-# Start the runner in the background
-./run.sh &
+# Start the runner in the foreground because no OpenOCD
+exec ./run.sh
