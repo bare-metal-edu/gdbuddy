@@ -24,6 +24,7 @@ RUN   apt-get update --allow-releaseinfo-change && \
       libstdc++6 \
       pkg-config \
       pcre2-utils \
+      libicu72 \
       && rm -rf /var/lib/apt/lists/*
 
 RUN   python -m pip install gatorgrade --break-system-packages
