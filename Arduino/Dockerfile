@@ -2,33 +2,38 @@ FROM  debian:trixie-slim
 
 RUN   useradd -ms /bin/bash runner
 
-RUN   apt-get update --allow-releaseinfo-change && \
-      apt-get install -y \
+RUN   apt-get update && apt-get install -y \
+      # gcc-arm-none-eabi        # ARM cross‑compiler not needed for Arduino builds
+      cmake \
       curl \
       git \
+      # automake                 # only used when building OpenOCD
+      # autoconf                 # ditto
+      build-essential \
+      # texinfo                  # OpenOCD documentation build, unused here
+      libtool \
+      # libftdi-dev              # Pico-specific USB/FTDI driver, not required
+      # libusb-1.0.0-dev         # ditto
       python-is-python3 \
       python3-pip \
-      build-essential \
-      cmake \
-      wget \
-      nano \
-      jq \
-      ca-certificates \
-      gnupg \
-      libtool \
-      libftdi-dev \
-      libusb-1.0.0-dev \
-      libicu76 \
-      libjim-dev \
-      libicu-dev \
-      libstdc++6 \
       pkg-config \
       pcre2-utils \
-      libicu72 \
-      dotnet-runtime-6.0 \
-      && rm -rf /var/lib/apt/lists/*
+      # gdb-multiarch            # debugging tool for embedded targets
+      wget \
+      # jimsh                    # shell used by Pico OpenOCD
+      # libjim-dev               # dev libs for JIM shell
+      jq \
+      nano \
+      libicu-dev
+      
 
 RUN   python -m pip install gatorgrade --break-system-packages
+
+RUN   mkdir /tools
+RUN   cd /tools && \ 
+git clone https://github.com/arduino/arduino-cli.git
+
+ENV   ARDUINO_CLI_PATH="/tools/arduino-cli"
 
 # Create Directory for Arduino CLI
 RUN mkdir -p /usr/local/bin
