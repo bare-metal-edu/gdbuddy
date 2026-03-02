@@ -32,7 +32,7 @@ jobs:
 # Build and push Arduino
       - name: Build Arduino image
         run: |
-          docker build -f Arduino/Dockerfile . -t gdbuddy:arduino
+          docker build -t gdbuddy:arduino ./Arduino
 
       - name: Publish Arduino image
         run: |
