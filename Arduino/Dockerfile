@@ -25,6 +25,7 @@ RUN   apt-get update --allow-releaseinfo-change && \
       pkg-config \
       pcre2-utils \
       libicu72 \
+      dotnet-runtime-6.0 \
       && rm -rf /var/lib/apt/lists/*
 
 RUN   python -m pip install gatorgrade --break-system-packages
