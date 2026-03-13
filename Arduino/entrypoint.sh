@@ -21,5 +21,25 @@ else
     echo "Runner already configured, skipping config."
 fi
 
-# Start the runner in the foreground because no OpenOCD
-exec ./run.sh
+# Start the runner in the background
+./run.sh &
+
+# Arduino Hardware Awareness
+
+echo "Waiting for Arduino on /dev/ttyACM0..."
+
+while [ ! -e /dev/ttyACM0 ]; do
+    echo "Arduino not connected..."
+    sleep 2
+done
+
+echo "Arduino detected!"
+
+# keep container alive while device exists
+
+while [ -e /dev/ttyACM0 ]; do
+    sleep 2
+done
+
+echo "Arduino disconnected, stopping runner..."
+exit 1
