@@ -44,7 +44,7 @@ RUN /usr/local/bin/arduino-cli config init && \
     /usr/local/bin/arduino-cli core install arduino:samd && \
     /usr/local/bin/arduino-cli core install arduino:mbed_rp2040
 
-RUN cp /root/.arduino15 /home/runner/.arduino15
+RUN cp -r /root/.arduino15 /home/runner/.arduino15
 RUN chown -R runner:runner /home/runner/.arduino15
 RUN usermod -aG tty runner
 RUN usermod -aG dialout runner
