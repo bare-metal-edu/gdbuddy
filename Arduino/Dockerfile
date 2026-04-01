@@ -55,6 +55,9 @@ RUN /usr/local/bin/arduino-cli config init && \
 
 RUN chown -R runner:runner /root/.arduino15
 
+# Add blank sketch for startup reset
+COPY blank /home/runner/blank
+
 # Runner Setup
 RUN mkdir -p /home/runner/actions-runner
 RUN cd /home/runner/actions-runner && \
