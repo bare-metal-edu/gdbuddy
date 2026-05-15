@@ -3,7 +3,7 @@ name: Publish image
 on:
   push:
     branches:
-      - Arduino
+      - main
 
 jobs:
   publish-image:
@@ -18,14 +18,25 @@ jobs:
       - name: Log in to container registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
-# Build and push Pico
+# Build and push Pico C
       - name: Build Pico image
         run: |
-          docker build -f Pico/Dockerfile . -t gdbuddy:pico
+          docker build -f Pico-C/Dockerfile . -t gdbuddy:pico-c
 
       - name: Publish Pico image
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:pico
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:pico-c
+          docker tag gdbuddy:pico $IMAGE_ID
+          docker push $IMAGE_ID
+
+# Build and push Pico Micropython
+      - name: Build Pico image
+        run: |
+          docker build -f Pico-C/Dockerfile . -t gdbuddy:pico-c
+
+      - name: Publish Pico image
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:pico-c
           docker tag gdbuddy:pico $IMAGE_ID
           docker push $IMAGE_ID
 
