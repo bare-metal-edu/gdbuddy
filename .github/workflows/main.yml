@@ -26,7 +26,7 @@ jobs:
       - name: Publish Pico image
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:pico-c
-          docker tag gdbuddy:pico $IMAGE_ID
+          docker tag gdbuddy:pico-c $IMAGE_ID
           docker push $IMAGE_ID
 
 # Build and push Pico Micropython
@@ -36,8 +36,8 @@ jobs:
 
       - name: Publish Pico image
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:pico-c
-          docker tag gdbuddy:pico $IMAGE_ID
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/gdbuddy:pico-micropython
+          docker tag gdbuddy:pico-micropython $IMAGE_ID
           docker push $IMAGE_ID
 
 # Build and push Arduino
