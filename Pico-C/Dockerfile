@@ -23,7 +23,7 @@ RUN   apt-get update && apt-get install -y \
       jimsh \
       libjim-dev \
       jq \
-      nano \ 
+      nano \
       libicu-dev
       
 
@@ -51,19 +51,22 @@ ENV   OPENOCD_PATH="/tools/openocd"
 #      cd cmocka-1.1.7 && mkdir -p build && cd build && \
 #      cmake .. && make && make install
 
-RUN   mkdir runner
-RUN   cd runner && \
+
+# Runner Setup
+
+RUN   mkdir -p /home/runner/actions-runner
+RUN   cd /home/runner/actions-runner && \
       curl -o actions-runner-linux-x64-2.330.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-linux-x64-2.330.0.tar.gz && \
       tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
 
-ADD   entrypoint.sh entrypoint.sh
+ADD   Pico/entrypoint.sh entrypoint.sh
 RUN   chmod +x entrypoint.sh
 
-ADD   openocd-helpers.tcl /tools/openocd-helpers.tcl
+ADD   Pico/openocd-helpers.tcl /tools/openocd-helpers.tcl
 
 RUN   chown runner:runner /home/runner -R
 RUN   chmod o+rws /home/runner -R
 
 USER  runner
 
-ENTRYPOINT  /entrypoint.sh
+ENTRYPOINT  Pico/entrypoint.sh
