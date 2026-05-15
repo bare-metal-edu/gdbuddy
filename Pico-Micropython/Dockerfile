@@ -6,7 +6,9 @@ RUN   apt-get update && apt-get install -y \
       curl \
       git \
       jq \
-      nano
+      nano \
+      libicu-dev
+
 
 RUN   curl -LsSf https://astral.sh/uv/install.sh | sh
 
