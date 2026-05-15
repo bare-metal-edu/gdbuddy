@@ -54,19 +54,19 @@ ENV   OPENOCD_PATH="/tools/openocd"
 
 # Runner Setup
 
+ADD   openocd-helpers.tcl /tools/openocd-helpers.tcl
+
 RUN   mkdir -p /home/runner/actions-runner
 RUN   cd /home/runner/actions-runner && \
       curl -o actions-runner-linux-x64-2.330.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.330.0/actions-runner-linux-x64-2.330.0.tar.gz && \
       tar xzf ./actions-runner-linux-x64-2.330.0.tar.gz
 
-ADD   Pico/entrypoint.sh entrypoint.sh
-RUN   chmod +x entrypoint.sh
+ADD entrypoint.sh /home/runner/entrypoint.sh
+RUN chmod +x /home/runner/entrypoint.sh
 
-ADD   Pico/openocd-helpers.tcl /tools/openocd-helpers.tcl
+RUN chown runner:runner /home/runner -R
+RUN chmod o+rws /home/runner -R
 
-RUN   chown runner:runner /home/runner -R
-RUN   chmod o+rws /home/runner -R
+USER runner
 
-USER  runner
-
-ENTRYPOINT  Pico/entrypoint.sh
+ENTRYPOINT ["/home/runner/entrypoint.sh"]
