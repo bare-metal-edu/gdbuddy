@@ -32,7 +32,7 @@ jobs:
 # Build and push Pico Micropython
       - name: Build Pico image
         run: |
-          docker build -f . -t gdbuddy:pico-c ./Pico-Micropython
+          docker build -f -t gdbuddy:pico-c ./Pico-Micropython
 
       - name: Publish Pico image
         run: |
